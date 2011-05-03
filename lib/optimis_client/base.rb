@@ -45,6 +45,9 @@ module OptimisClient
         options = { :disable_ssl_peer_verification => @disable_ssl_peer_verification, 
                     :timeout => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
          
+        options[:params] ||= {}           
+        options[:params].merge!( :api_key => self.api_key ) unless options[:params][:api_key]
+                             
         options[:headers] ||= {}
         options[:headers].merge!( "Authorization" => self.api_key ) unless options[:headers][:api_key]
          
