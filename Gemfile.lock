@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    optimis_client (0.1.0)
+    optimis_client (0.2.0)
       typhoeus (~> 0.2.3)
       yajl-ruby
 
