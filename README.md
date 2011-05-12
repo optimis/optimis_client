@@ -7,16 +7,15 @@ a Ruby client library for Optimis Service
 * typhoeus
 * yajl-ruby
 
-### typhoeus requires libcurl >= 7.19  
+### typhoeus requires libcurl >= 7.19 with OpenSSL support
 
-  wget http://curl.haxx.se/download/curl-7.21.4.tar.gz
-  tar zxvf curl-7.21.4.tar.gz
-  cd curl-7.21.4
-  ./configure
-  make
-  make install
-  gem install typhoeus
-
+    wget http://curl.haxx.se/download/curl-7.21.6.tar.gz
+    tar zxvf curl-7.21.6.tar.gz
+    cd curl-7.21.6
+    ./configure --with-ssl
+    make
+    make install
+    gem install typhoeus
 
 ## Run Unit Test
 
