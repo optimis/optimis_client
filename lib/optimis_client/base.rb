@@ -12,9 +12,15 @@ module OptimisClient
     
     DEFAULT_TIMEOUT = 10*1000 # 10s
 
+    @@hydra = Typhoeus::Hydra.new
+    
     class << self
-      attr_accessor :host, :hydra, :secure, :api_key, :timeout
+      attr_accessor :host, :secure, :api_key, :timeout
         
+      def hydra
+        @@hydra
+      end
+      
       def stubbed?
         !!@stubbed
       end

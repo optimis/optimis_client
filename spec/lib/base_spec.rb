@@ -4,7 +4,6 @@ describe OptimisClient::Base do
 
   before do
     OptimisClient::Base.host = 'service.optimis.local'
-    OptimisClient::Base.hydra = Typhoeus::Hydra.new
     OptimisClient::Base.api_key = '1234567890'
     OptimisClient::Base.secure = false
   end
