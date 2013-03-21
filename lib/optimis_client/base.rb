@@ -30,9 +30,6 @@ module OptimisClient
       end
 
       def secure=(value, disable_ssl_peer_verification = true)
-        if value && !(Typhoeus::Easy.new.curl_version =~ /OpenSSL/)
-          raise "Your libcurl SSL support not enabled."
-        end
         @secure = value
         @disable_ssl_peer_verification = disable_ssl_peer_verification
       end
