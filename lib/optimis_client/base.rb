@@ -89,7 +89,7 @@ module OptimisClient
         end
       end
 
-      def merge_default_options(options)
+      def merge_default_options(options = {})
         options = { :disable_ssl_peer_verification => @disable_ssl_peer_verification,
                     :timeout                       => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
         options[:headers] ||= {}
