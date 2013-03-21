@@ -48,18 +48,10 @@ module OptimisClient
       protected
 
       def new_request(url, options={})
-        options = { :disable_ssl_peer_verification => @disable_ssl_peer_verification,
-                    :timeout => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
-
-        options[:params] ||= {}
-        options[:params].merge!( :api_key => self.api_key ) unless options[:params][:api_key]
+        options = merge_default_options(options)
         if options[:params]
           options[:params] = fix_array_param_keys(options[:params])
         end
-
-        options[:headers] ||= {}
-        options[:headers].merge!( "Authorization" => self.api_key ) unless options[:headers][:api_key]
-
         Typhoeus::Request.new(url, options)
       end
 
@@ -97,7 +89,13 @@ module OptimisClient
         end
       end
 
+      def merge_default_options(options)
+        options = { :disable_ssl_peer_verification => @disable_ssl_peer_verification,
+                    :timeout                       => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
+        options[:headers] ||= {}
+        options[:headers].merge!('Authorization' => self.api_key) unless options[:headers][:api_key]
+        options
+      end
     end
   end
-
 end
