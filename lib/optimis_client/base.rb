@@ -31,7 +31,6 @@ module OptimisClient
 
       def secure=(value, disable_ssl_peer_verification = true)
         @secure = value
-        @disable_ssl_peer_verification = disable_ssl_peer_verification
       end
 
       def http_protocol
