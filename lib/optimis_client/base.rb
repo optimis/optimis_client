@@ -29,8 +29,9 @@ module OptimisClient
         @stubbed = value
       end
 
-      def secure=(value, disable_ssl_peer_verification = true)
+      def secure=(value, ssl_verifypeer = false)
         @secure = value
+        @ssl_verifypeer = ssl_verifypeer
       end
 
       def http_protocol
@@ -86,8 +87,8 @@ module OptimisClient
       end
 
       def merge_default_options(options = {})
-        options = { :disable_ssl_peer_verification => @disable_ssl_peer_verification,
-                    :timeout                       => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
+        options = { :ssl_verifypeer => @ssl_verifypeer,
+                    :timeout        => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
         options[:headers] ||= {}
         options[:headers].merge!('Authorization' => self.api_key) unless options[:headers][:api_key]
         options
