@@ -66,7 +66,7 @@ module OptimisClient
 
       def parse_json(response)
         begin
-          Yajl::Parser.parse(response.body)
+          Yajl::Parser.new.parse(response.body)
         rescue
           raise ResponseError.new( 502, "Parsing service JSON error: #{response.body}")
         end
