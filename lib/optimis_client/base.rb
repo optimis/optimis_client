@@ -46,22 +46,7 @@ module OptimisClient
 
       def new_request(url, options={})
         options = merge_default_options(options)
-        if options[:params]
-          options[:params] = fix_array_param_keys(options[:params])
-        end
         Typhoeus::Request.new(url, options)
-      end
-
-      def fix_array_param_keys(params)
-        fixed_params = {}
-        params.each do |key, value|
-          if Array === value
-            fixed_params.store("#{key}[]", value)
-          else
-            fixed_params.store(key, value)
-          end
-        end
-        fixed_params
       end
 
       def parse_json(response)
