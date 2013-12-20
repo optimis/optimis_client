@@ -3,3 +3,5 @@ script: 'bundle exec rspec spec'
 rvm:
   - 1.9.3
   - 2.0.0
+notifications:
+  campfire: 'optimis:bc4332cdfb7369434a16817078d74606c8d71589@244651'
