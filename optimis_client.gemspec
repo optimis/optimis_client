@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency "yajl-ruby"
 
   s.add_development_dependency "rspec", "~> 2.5"
+  s.add_development_dependency "rack", "~> 1.5"
 end
