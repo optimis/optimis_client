@@ -76,6 +76,9 @@ module OptimisClient
                     :timeout        => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
         options[:headers] ||= {}
         options[:headers].merge!('Authorization' => self.api_key) unless options[:headers][:api_key]
+        if options[:method].to_s == 'put' && !options[:headers]['Content-Type']
+          options[:headers].merge!('Content-Type' => 'application/x-www-form-urlencoded')
+        end
         options
       end
     end
