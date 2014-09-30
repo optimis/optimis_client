@@ -73,7 +73,7 @@ module OptimisClient
 
       def merge_default_options(options = {})
         options = { :ssl_verifypeer => @ssl_verifypeer,
-                    :timeout        => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
+                    :timeout_ms     => (@timeout || DEFAULT_TIMEOUT) }.merge(options)
         options[:headers] ||= {}
         options[:headers].merge!('Authorization' => self.api_key) unless options[:headers][:api_key]
         if options[:method].to_s == 'put' && !options[:headers]['Content-Type']
